@@ -36,7 +36,7 @@ export default function Location() {
   return (
    <>
    <div className="input-group w-auto" style={{'backgroundColor':'#fff', 'borderRadius': '7px'}} >
-            <span className="input-group-text w-50" >
+            <span className="input-group-text w-50"  style={{flexWrap: 'initial'}}>
             <HtmlTooltip
         title={
           <React.Fragment>
