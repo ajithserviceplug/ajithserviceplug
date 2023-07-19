@@ -42,6 +42,13 @@ const Home = () => {
   }
 
 
+  const [address, setAddress] = React.useState('');
+
+  React.useEffect(()=>{
+    const newObj = menus.find(val => val.selected === true);
+    setAddress(newObj);
+  }, [menus,setAddress])
+
 
   return (
     <div className="home-container">
@@ -63,7 +70,7 @@ const Home = () => {
       <div className="home-banner-container pt-4">
         <div className="home-text-section">
           <h5 className="primary-heading">
-            Nearby
+            {address.text}
           </h5>
         </div>
         <div className="home-image-section">
