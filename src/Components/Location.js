@@ -13,84 +13,85 @@ import Autocomplete from '@mui/material/Autocomplete';
 
 
 export default function Location() {
-    const HtmlTooltip = styled(({ className, ...props }) => (
-        <Tooltip {...props} classes={{ popper: className }} />
-      ))(({ theme }) => ({
-        [`& .${tooltipClasses.tooltip}`]: {
-          backgroundColor: '#f5f5f9',
-          color: 'rgba(0, 0, 0, 0.87)',
-          maxWidth: 220,
-          fontSize: theme.typography.pxToRem(12),
-          border: '1px solid #dadde9',
-        },
-      }));
+  const HtmlTooltip = styled(({ className, ...props }) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: '#f5f5f9',
+      color: 'rgba(0, 0, 0, 0.87)',
+      maxWidth: 220,
+      fontSize: theme.typography.pxToRem(12),
+      border: '1px solid #dadde9',
+    },
+  }));
 
-      const options = top100Films.map((option) => {
-        const firstLetter = option.title[0].toUpperCase();
-        return {
-          firstLetter: /[0-9]/.test(firstLetter) ? '0-9' : firstLetter,
-          ...option,
-        };
-      });
+  const options = top100Films.map((option) => {
+    const firstLetter = option.title[0].toUpperCase();
+    return {
+      firstLetter: /[0-9]/.test(firstLetter) ? '0-9' : firstLetter,
+      ...option,
+    };
+  });
 
   return (
-   <>
-   <div className="input-group w-auto" style={{'backgroundColor':'#fff', 'borderRadius': '7px'}} >
-            <span className="input-group-text w-50"  style={{flexWrap: 'initial'}}>
-            <HtmlTooltip
-        title={
-          <React.Fragment>
-             <List
-      sx={{
-        width: '100%',
-        maxWidth: 800,
-        bgcolor: '#fff',
-      }}
-    >
-      <ListItem>
-        <ListItemText className='l1-txt' primary="Detect current location" secondary="Using GPS" />
-      </ListItem>    
-      <Divider component="li" variant="inset" />
-      <li>
-        <Typography
-          sx={{ mt: 0.5, ml: 9 }}
-          color="text.secondary"
-          display="block"
-          variant="caption"
-        >
-          (OR)
-        </Typography>
-      </li>
-      <ListItem>
-       
-        <ListItemText primary="Enter location manually"  />
-      </ListItem>
-    </List>
-          </React.Fragment>
-        }
-      >
-        <Button> <span className='sm-1'>Bengaluru <span className='sm-3'>No 71, Apartmen...</span></span></Button>
-      </HtmlTooltip>
+    <>
+      <div className="input-group w-auto" style={{ 'backgroundColor': '#fff', 'borderRadius': '7px' }} >
+        <span className="input-group-text input-mobile-width" style={{ flexWrap: 'initial' }}>
+          <HtmlTooltip arrow
+            title={
+              <React.Fragment>
+                <List
+                  sx={{
+                    width: '100%',
+                    maxWidth: 800,
+                    bgcolor: '#fff',
+                  }}
+                >
+                  <ListItem>
+                    <ListItemText className='l1-txt' primary="Detect current location" secondary="Using GPS" />
+                  </ListItem>
+                  <Divider component="li" variant="inset" />
+                  <li>
+                    <Typography
+                      sx={{ mt: 0.5, ml: 9 }}
+                      color="text.secondary"
+                      display="block"
+                      variant="caption"
+                    >
+                      (OR)
+                    </Typography>
+                  </li>
+                  <ListItem>
 
-   </span>
+                    <ListItemText primary="Enter location manually" />
+                  </ListItem>
+                </List>
+              </React.Fragment>
+            }
+          >
+            <Button> <span className='sm-1'>Bengaluru <span className='sm-3'>No 71, Apartmen...</span></span></Button>
+          </HtmlTooltip>
 
-<Autocomplete
-      id="movie-customized-option-demo"
-      
-      options={options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
-      groupBy={(option) => option.firstLetter}
-      getOptionLabel={(option) => option.title}
-      sx={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label="" />}
-    />
-            {/* </span> */}
-          </div>
-   </>
+        </span>
+
+        <Autocomplete
+        className='input-mobile-width'
+          id="movie-customized-option-demo"
+
+          options={options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+          groupBy={(option) => option.firstLetter}
+          getOptionLabel={(option) => option.title}
+          sx={{ width: 300 }}
+          renderInput={(params) => <TextField {...params} label="" placeholder='Search For Shop name, Service, Anything' />}
+        />
+        {/* </span> */}
+      </div>
+    </>
   )
 }
 
 
-const top100Films = [  
+const top100Films = [
   { title: 'Aliens', year: 1986 },
   { title: 'Aliens2', year: 1996 },
   { title: 'Aliens3', year: 1998 },
